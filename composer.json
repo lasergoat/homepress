@@ -7,11 +7,11 @@
             "package": {
                 "name": "wordpress/wordpress",
                 "type": "webroot",
-                "version": "dev-master",
+                "version": "4.0.8",
                 "source": {
                     "type": "git",
                     "url": "https://github.com/WordPress/WordPress.git",
-                    "reference": "@dev"
+                    "reference": "4.0.8"
                 },
                 "require": {
                     "fancyguy/webroot-installer": "1.1.0"
@@ -21,7 +21,7 @@
     ],
     "require": {
         "laravel/homestead": "^2.1",
-        "wordpress/wordpress": "dev-master"
+        "wordpress/wordpress": "4.0.8"
     },
     "extra": {
         "webroot-dir": "public",
@@ -33,6 +33,7 @@
             "php vendor/bin/homestead make",
             "ln -s public/wp-content/themes themes"
         ],
+        "create-windows": ["composer install", "vendor\\bin\\homestead make", "vagrant up"],
         "up": ["vagrant up"],
         "ssh": ["vagrant up", "vagrant ssh"]
     },
