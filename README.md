@@ -13,9 +13,9 @@ These aren't yet met
 
 * require this project 
 * run `something` that will do:
-*  * install homestead
-*  * install wordpress
-*  * configure homestead's yaml file
-*  * write salts and crap in the wp config file
+  * install homestead
+  * install wordpress
+  * configure homestead's yaml file
+  * write salts and crap in the wp config file
 
 
