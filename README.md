@@ -7,4 +7,15 @@ Download a [zip](https://github.com/lasergoat/homepress/archive/master.zip) of t
 
 Simply run: `composer create`
 
+##Goals
+
+These aren't yet met
+
+* require this project 
+* run `something` that will do:
+*  * install homestead
+*  * install wordpress
+*  * configure homestead's yaml file
+*  * write salts and crap in the wp config file
+
 
