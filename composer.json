@@ -26,7 +26,6 @@
             "php vendor/bin/homestead make",
             "mv vendor/wordpress public"
         ],
-        "create-windows": ["composer install", "vendor\\bin\\homestead make", "vagrant up"],
         "up": ["vagrant up"],
         "ssh": ["vagrant up", "vagrant ssh"]
     },
