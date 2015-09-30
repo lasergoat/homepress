@@ -1,4 +1,11 @@
 
+echo "Installing Napa..."
+# install napa
+npm install
+
+# install and move wordpress
+echo "Updating WordPress..."
+
 napa WordPress/WordPress
-mv node_modules/WordPress/* .
+rsync -dr node_modules/WordPress/* .
 rm -rf node_modules/WordPress
