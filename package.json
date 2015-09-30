@@ -17,8 +17,8 @@
     "napa": "^1.2.0"
   },
   "scripts": {
-    "init": "sh init.sh",
-    "wp-update": "sh wp-create.sh",
-    "wp-salts": "php wp-salts.php"
+    "init": "sh scripts/init.sh",
+    "wp-update": "sh scripts/wp-create.sh",
+    "wp-salts": "php scripts/wp-salts.php"
   }
 }

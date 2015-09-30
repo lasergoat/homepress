@@ -4,6 +4,7 @@ Vagrantfile
 vendor
 .vagrant
 node_modules
+npm-debug.log
 
 #wordpress ignores
 # until I find a way to have homepress in the node_modules folder
