@@ -19,6 +19,7 @@
   "scripts": {
     "init": "sh scripts/init.sh",
     "wp-update": "sh scripts/wp-create.sh",
-    "wp-salts": "php scripts/wp-salts.php"
+    "wp-salts": "php scripts/wp-salts.php",
+    "vm-init": "sh scripts/homestead-init.sh"
   }
 }

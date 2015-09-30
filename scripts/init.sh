@@ -1,8 +1,5 @@
 
 # get theme directory name
-echo "What is the name of your local dev site? (eg. blah.local)"
-read siteName
-
 echo "What is the name of your theme directory?"
 read themeName
 
@@ -56,13 +53,4 @@ echo "Making Alias to your theme..."
 mkdir -p wp-content/themes/$themeName
 ln -s wp-content/themes/$themeName theme
 
-# install the VM
-echo "Installing the VM (homestead)..."
-napa laravel/homestead
-composer install
-php vendor/bin/homestead make
-sed -i '' -e"s/homestead\.app/$siteName/" Homestead.yaml
-vagrant up
-
-echo "Vistit http://$siteName in your browser"
-echo "Done."
+sh scripts/homestead-init.sh

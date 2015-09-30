@@ -14,11 +14,21 @@ To update wordpress, run `npm run wp-update`.
 
 To just make new salts, run `npm run wp-salts`.
 
+If you already have wordpress but want the VM, run `npm run vm-init`.
+
+####Hosts File
+
+When it asks for your site name, make sure to add that to your hosts file also. `sudo nano etc/hosts`
+
+I typed `homepress.local`, so I add this to the bottom of my file:
+
+    192.168.10.10   homepress.local
+
 
 ##Requirements
 
 
-####Composer
+####Have Composer
 
 [Install composer globally](https://getcomposer.org/doc/00-intro.md#globally):
 
@@ -28,7 +38,7 @@ sudo mv composer.phar /usr/local/bin/composer
 </pre>
 
 
-####Node/NPM, Virtual Box and Vagrant
+####Have Node/NPM, Virtual Box and Vagrant
 
 * [Node.js](https://nodejs.org/en/)
 * [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
