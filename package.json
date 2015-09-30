@@ -1,5 +1,5 @@
 {
-  "name": "homepress",
+  "name": "@lasergoat/homepress",
   "version": "0.0.1",
   "description": "A simple solution for local Wordpress development within a VM",
   "main": "index.js",
@@ -12,18 +12,25 @@
   "bugs": {
     "url": "https://github.com/lasergoat/homepress/issues"
   },
+  "preferGlobal": true,
   "homepage": "https://github.com/lasergoat/homepress#readme",
-  "devDependencies": {
-    "napa": "^1.2.0"
+  "devDependencies": {},
+  "bin": {
+    "homepress": "bin/homepress.js"
   },
   "scripts": {
-    "start": "sh scripts/init.sh",
     "init": "sh scripts/init.sh",
+    "start": "sh scripts/init.sh",
     "wp-update": "sh scripts/wp-update.sh",
     "wp-salts": "php scripts/wp-salts.php",
     "vm-init": "sh scripts/vm-init.sh",
     "vm-start": "vagrant up",
     "vm-stop": "vagrant halt",
     "vm-ssh": "vagrant ssh"
+  },
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "inquirer": "^0.10.1",
+    "request": "^2.64.0"
   }
 }

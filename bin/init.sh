@@ -1,4 +1,8 @@
 
+echo ""
+echo "$PWD"
+exit 0
+
 # get theme directory name
 read -p "What is the name of your theme directory? " themeName
 
@@ -15,24 +19,24 @@ then
     exit 0
 fi
 
-rm -rf index.php
-rm -rf license.txt
-rm -rf readme.html
-rm -rf wp-activate.php
-rm -rf wp-admin
-rm -rf wp-blog-header.php
-rm -rf wp-comments-post.php
-rm -rf wp-config-sample.php
-rm -rf wp-cron.php
-rm -rf wp-includes
-rm -rf wp-links-opml.php
-rm -rf wp-load.php
-rm -rf wp-login.php
-rm -rf wp-mail.php
-rm -rf wp-settings.php
-rm -rf wp-signup.php
-rm -rf wp-trackback.php
-rm -rf xmlrpc.php
+rm -rf $PWD/index.php
+rm -rf $PWD/license.txt
+rm -rf $PWD/readme.html
+rm -rf $PWD/wp-activate.php
+rm -rf $PWD/wp-admin
+rm -rf $PWD/wp-blog-header.php
+rm -rf $PWD/wp-comments-post.php
+rm -rf $PWD/wp-config-sample.php
+rm -rf $PWD/wp-cron.php
+rm -rf $PWD/wp-includes
+rm -rf $PWD/wp-links-opml.php
+rm -rf $PWD/wp-load.php
+rm -rf $PWD/wp-login.php
+rm -rf $PWD/wp-mail.php
+rm -rf $PWD/wp-settings.php
+rm -rf $PWD/wp-signup.php
+rm -rf $PWD/wp-trackback.php
+rm -rf $PWD/xmlrpc.php
 
 echo "Installing Napa..."
 # install napa. most people don't have wget, but everyone has npm 
@@ -42,12 +46,12 @@ npm install
 # install and move wordpress
 echo "Installing WordPress..."
 napa WordPress/WordPress
-rsync -dr node_modules/WordPress/* .
-rm -rf node_modules/WordPress
-cp wp-config-sample.php wp-config.php
+rsync -dr $PWD/node_modules/WordPress/* $PWD/.
+rm -rf $PWD/node_modules/WordPress
+cp $PWD/wp-config-sample.php $PWD/wp-config.php
 
 echo "Generating Salts..."
-php scripts/wp-salts.php
+php $_scripts/wp-salts.php
 
 echo "Configuring WordPress Database..."
 
@@ -61,4 +65,3 @@ echo "Making Alias to your theme..."
 mkdir -p wp-content/themes/$themeName
 ln -s wp-content/themes/$themeName theme
 
-sh scripts/vm-init.sh
