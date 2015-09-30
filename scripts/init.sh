@@ -1,12 +1,19 @@
 
 # get theme directory name
-echo "What is the name of your theme directory?"
-read themeName
+read -p "What is the name of your theme directory? " themeName
 
 echo "Continuing this process will delete your WP files"
 echo "(This won't affect your wp-content like plugins and non-default themes)"
-echo "Control+C to quit now or hit enter to continue"
-read ok
+
+continuePrefDefault="y"
+read -p "Want to continue? [y/N]: " continuePref
+continuePref=${continuePref:-$continuePrefDefault}
+
+if [ "$continuePref" != "y" ]
+then
+    echo "Exiting..."
+    exit 0
+fi
 
 rm -rf index.php
 rm -rf license.txt

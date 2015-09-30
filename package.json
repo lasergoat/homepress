@@ -1,6 +1,6 @@
 {
   "name": "homepress",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A simple solution for local Wordpress development within a VM",
   "main": "index.js",
   "repository": {
@@ -17,6 +17,7 @@
     "napa": "^1.2.0"
   },
   "scripts": {
+    "start": "sh scripts/init.sh",
     "init": "sh scripts/init.sh",
     "wp-update": "sh scripts/wp-update.sh",
     "wp-salts": "php scripts/wp-salts.php",

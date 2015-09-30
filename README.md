@@ -10,29 +10,12 @@ Download a [zip](https://github.com/lasergoat/homepress/archive/master.zip) of t
 
 Have the requirements met below, then simply run: 
 
-    npm run init
+    npm start
 
-
-####Hosts File
-
-When it asks for your site name, make sure to add that to your hosts file also. `sudo nano etc/hosts`
-
-I typed `homepress.local`, so I add this to the bottom of my file:
-
-    192.168.10.10   homepress.local
+*This will also ask if you want to add your new local dev site IP address to your hosts file. Hint: you do.*
 
 
 ##Requirements
-
-
-####Have Composer
-
-[Install composer globally](https://getcomposer.org/doc/00-intro.md#globally):
-
-<pre>
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-</pre>
 
 
 ####Have Node/NPM, Virtual Box and Vagrant
@@ -43,7 +26,19 @@ sudo mv composer.phar /usr/local/bin/composer
 * [Have an ssh key](https://help.github.com/articles/generating-ssh-keys/) in your `~/.ssh/` directory
 
 
+####Also Have Composer
+
+[Install composer globally](https://getcomposer.org/doc/00-intro.md#globally):
+
+<pre>
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+</pre>
+
+
 ##Other Commands
+
+**Init Everything**: `npm start` OR `npm run init`
 
 **Update your WordPress Version**: `npm run wp-update`
 
