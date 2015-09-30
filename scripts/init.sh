@@ -28,7 +28,8 @@ rm -rf wp-trackback.php
 rm -rf xmlrpc.php
 
 echo "Installing Napa..."
-# install napa
+# install napa. most people don't have wget, but everyone has npm 
+# if they are using this package
 npm install
 
 # install and move wordpress
@@ -53,4 +54,4 @@ echo "Making Alias to your theme..."
 mkdir -p wp-content/themes/$themeName
 ln -s wp-content/themes/$themeName theme
 
-sh scripts/homestead-init.sh
+sh scripts/vm-init.sh

@@ -8,13 +8,10 @@ Download a [zip](https://github.com/lasergoat/homepress/archive/master.zip) of t
 
 ##Installation
 
-Simply run: `npm run init`
+Have the requirements met below, then simply run: 
 
-To update wordpress, run `npm run wp-update`. 
+    npm run init
 
-To just make new salts, run `npm run wp-salts`.
-
-If you already have wordpress but want the VM, run `npm run vm-init`.
 
 ####Hosts File
 
@@ -43,6 +40,22 @@ sudo mv composer.phar /usr/local/bin/composer
 * [Node.js](https://nodejs.org/en/)
 * [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
 * [Vagrant](https://www.vagrantup.com/downloads.html)
+* [Have an ssh key](https://help.github.com/articles/generating-ssh-keys/) in your `~/.ssh/` directory
+
+
+##Other Commands
+
+**Update your WordPress Version**: `npm run wp-update`
+
+**Generate new WordPress salts**: `npm run wp-salts`
+
+**Install VM Only (because you already have WordPress**: `npm run vm-init`
+
+**Start the VM**: `npm run vm-start`
+
+**Stop/Halt the VM**: `npm run vm-stop`
+
+**SSH into the VM**: `npm run vm-ssh`
 
 
 #TODO: 

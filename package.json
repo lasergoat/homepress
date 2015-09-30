@@ -18,8 +18,11 @@
   },
   "scripts": {
     "init": "sh scripts/init.sh",
-    "wp-update": "sh scripts/wp-create.sh",
+    "wp-update": "sh scripts/wp-update.sh",
     "wp-salts": "php scripts/wp-salts.php",
-    "vm-init": "sh scripts/homestead-init.sh"
+    "vm-init": "sh scripts/vm-init.sh",
+    "vm-start": "vagrant up",
+    "vm-stop": "vagrant halt",
+    "vm-ssh": "vagrant ssh"
   }
 }
