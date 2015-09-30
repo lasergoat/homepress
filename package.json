@@ -18,19 +18,10 @@
   "bin": {
     "homepress": "bin/homepress.js"
   },
-  "scripts": {
-    "init": "sh scripts/init.sh",
-    "start": "sh scripts/init.sh",
-    "wp-update": "sh scripts/wp-update.sh",
-    "wp-salts": "php scripts/wp-salts.php",
-    "vm-init": "sh scripts/vm-init.sh",
-    "vm-start": "vagrant up",
-    "vm-stop": "vagrant halt",
-    "vm-ssh": "vagrant ssh"
-  },
   "dependencies": {
     "adm-zip": "^0.4.7",
     "inquirer": "^0.10.1",
-    "request": "^2.64.0"
+    "request": "^2.64.0",
+    "underscore": "^1.8.3"
   }
 }

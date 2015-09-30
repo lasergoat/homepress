@@ -1,49 +1,62 @@
 #! /usr/bin/env node
 
 var command = process.argv[2];
-// var execSync = require('child_process').execSync;
+var path = require('path');
 
-// console.log(process.env);
-// execSync(`sh ${__dirname}/init.sh`);
-// return;
+var execSync = require('child_process').execSync;
+
+var steps = {
+  init      : require(path.join(__dirname, 'init.js')),
+  wordpress : require(path.join(__dirname, 'wordpress.js')),
+  salts     : require(path.join(__dirname, 'salts.js')),
+  vm        : require(path.join(__dirname, 'vm.js')),
+  gitignore : require(path.join(__dirname, 'gitignore.js')),
+}
 
 switch(command) {
 
+  case "debug":
+    // steps.gitignore();
+  break;
+
   case "start":
   case "init":
-    var init = require(`${__dirname}/init.js`);
+    steps.init(() => {
 
-    // execSync(`sh ${__dirname}/vm-init.sh`);
+      steps.wordpress(() => {
+
+        steps.gitignore();
+        steps.salts();
+        steps.vm(() => {
+          console.log('ALL DONE.');
+        });
+
+      });
+    });
   break;
 
   case "wp-update":
-    var cmd = "sh wp-update.sh";
-    execSync(cmd);
+    steps.wordpress();
   break;
 
   case "wp-salts":
-    var cmd = "php wp-salts.php";
-    execSync(cmd);
+    steps.salts();
   break;
 
   case "vm-init":
-    var cmd = "sh vm-init.sh";
-    execSync(cmd);
+    steps.vm();
   break;
 
   case "vm-start":
-    var cmd = "vagrant up";
-    execSync(cmd);
+    execSync('vagrant up');
   break;
 
   case "vm-stop":
-    var cmd = "vagrant halt";
-    execSync(cmd);
+    execSync('vagrant halt');
   break;
 
   case "vm-ssh":
-    var cmd = "vagrant ssh";
-    execSync(cmd);
+    execSync('vagrant ssh');
   break;
 
   default:

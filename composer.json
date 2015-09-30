@@ -1,7 +1,0 @@
-{
-    "name": "lasergoat/homepress",
-    "description": "A simple composer script to install a per-project functional wordpress within a homestead VM",
-    "require": {
-        "laravel/homestead": "^2.1"
-    }
-}

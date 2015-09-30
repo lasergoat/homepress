@@ -6,27 +6,3 @@ vendor
 node_modules
 npm-debug.log
 theme
-
-#wordpress ignores
-# until I find a way to have homepress in the node_modules folder
-readme.html
-license.txt
-index.php
-wp-activate.php
-wp-admin
-wp-blog-header.php
-wp-comments-post.php
-wp-config-sample.php
-wp-config.php
-wp-cron.php
-wp-includes
-wp-links-opml.php
-wp-load.php
-wp-login.php
-wp-mail.php
-wp-settings.php
-wp-signup.php
-wp-trackback.php
-xmlrpc.php
-
-wp-content
