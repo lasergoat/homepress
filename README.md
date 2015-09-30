@@ -57,3 +57,14 @@ sudo mv composer.phar /usr/local/bin/composer
 ##Todo:
 
 * finish the part that writes your host entry to /etc/hosts
+
+##Development
+
+To test this locally, simply do this:
+
+    npm install homepress
+    cd ../
+    mkdir test
+    cd test
+    npm install -g ../homepress/ && homepress start
+
