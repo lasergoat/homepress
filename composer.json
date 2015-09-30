@@ -1,46 +1,7 @@
 {
     "name": "lasergoat/homepress",
     "description": "A simple composer script to install a per-project functional wordpress within a homestead VM",
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "wordpress/wordpress",
-                "type": "webroot",
-                "version": "4.0.8",
-                "source": {
-                    "type": "git",
-                    "url": "https://github.com/WordPress/WordPress.git",
-                    "reference": "4.0.8"
-                },
-                "require": {
-                    "fancyguy/webroot-installer": "1.1.0"
-                }
-            }
-        }
-    ],
     "require": {
-        "laravel/homestead": "^2.1",
-        "wordpress/wordpress": "4.0.8"
-    },
-    "extra": {
-        "webroot-dir": "public",
-        "webroot-package": "wordpress/wordpress"
-    },
-    "scripts": {
-        "create": [
-            "composer install",
-            "rm -rf public/.git/",
-            "php vendor/bin/homestead make"
-        ],
-        "create-windows": ["composer install", "vendor\\bin\\homestead make", "vagrant up"],
-        "up": ["vagrant up"],
-        "ssh": ["vagrant up", "vagrant ssh"]
-    },
-    "authors": [
-        {
-            "name": "Daniel Walker",
-            "email": "polyesterhat@gmail.com"
-        }
-    ]
+        "laravel/homestead": "^2.1"
+    }
 }

@@ -1,0 +1,24 @@
+{
+  "name": "homepress",
+  "version": "1.0.0",
+  "description": "A simple solution for local Wordpress development within a VM",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lasergoat/homepress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lasergoat/homepress/issues"
+  },
+  "homepage": "https://github.com/lasergoat/homepress#readme",
+  "devDependencies": {
+    "napa": "^1.2.0"
+  },
+  "scripts": {
+    "init": "sh init.sh",
+    "wp-update": "sh wp-create.sh",
+    "wp-salts": "php wp-salts.php"
+  }
+}
