@@ -10,7 +10,8 @@ Download a [zip](https://github.com/lasergoat/homepress/archive/master.zip) of t
 
 Have the requirements met below, then simply run: 
 
-    npm start
+    npm install -g homepress
+    homepress start
 
 *This will also ask if you want to add your new local dev site IP address to your hosts file. Hint: you do.*
 
@@ -38,24 +39,21 @@ sudo mv composer.phar /usr/local/bin/composer
 
 ##Other Commands
 
-**Init Everything**: `npm start` OR `npm run init`
+**Init Everything**: `homepress start` OR `homepress init`
 
-**Update your WordPress Version**: `npm run wp-update`
+**Update your WordPress Version**: `homepress wp-update`
 
-**Generate new WordPress salts**: `npm run wp-salts`
+**Generate new WordPress salts**: `homepress wp-salts`
 
-**Install VM Only (because you already have WordPress**: `npm run vm-init`
+**Install VM Only (because you already have WordPress**: `homepress vm-init`
 
-**Start the VM**: `npm run vm-start`
+**Start the VM**: `vagrant up`
 
-**Stop/Halt the VM**: `npm run vm-stop`
+**Stop/Halt the VM**: `vagrant halt`
 
-**SSH into the VM**: `npm run vm-ssh`
+**SSH into the VM**: `vagrant ssh`
 
 
-#TODO: 
+##Todo:
 
-* find a way to make this work by `npm install homepress`
-  * that way homepress can live in the node_modules folder
-* make homepress generate a custom .gitignore file
-  * to ignore the WP core files
+* finish the part that writes your host entry to /etc/hosts

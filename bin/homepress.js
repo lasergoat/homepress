@@ -36,15 +36,15 @@ switch(command) {
   break;
 
   case "wp-update":
-    steps.wordpress();
+    steps.wordpress(() => console.log('ALL DONE.'));
   break;
 
   case "wp-salts":
-    steps.salts();
+    steps.salts(() => console.log('ALL DONE.'));
   break;
 
   case "vm-init":
-    steps.vm();
+    steps.vm(() => console.log('ALL DONE.'));
   break;
 
   case "vm-start":
