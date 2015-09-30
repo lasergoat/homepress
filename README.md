@@ -44,3 +44,10 @@ sudo mv composer.phar /usr/local/bin/composer
 * [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
 * [Vagrant](https://www.vagrantup.com/downloads.html)
 
+
+#TODO: 
+
+* find a way to make this work by `npm install homepress`
+  * that way homepress can live in the node_modules folder
+* make homepress generate a custom .gitignore file
+  * to ignore the WP core files
