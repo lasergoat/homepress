@@ -1,6 +1,6 @@
 {
   "name": "homepress",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple solution for local Wordpress development within a VM",
   "main": "index.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/lasergoat/homepress.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/lasergoat/homepress/issues"
   },

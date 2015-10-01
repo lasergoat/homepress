@@ -10,7 +10,7 @@ Have the requirements met below, then simply run:
     npm install -g homepress
     homepress start
 
-*This will also ask if you want to add your new local dev site IP address to your hosts file. Hint: you do.*
+**COMING SOON:** *Homepress will ask if you want to add your new local dev site IP address to your hosts file. Hint: you do.* 
 
 
 <h2>Requirements</h2>
