@@ -15,11 +15,35 @@ module.exports = function(callback) {
 
   var options = null;
 
+  function terminalProcess(command, cb) {
+
+    var tty = require('child_process').spawn('bash');
+
+    tty.stdout.on('data', function (data) {
+      data != '\n' && console.log('' + data);
+    });
+
+    tty.stderr.on('data', function (data) {
+      data != '\n' && console.log('' + data);
+    });
+
+    tty.on('exit', function (code) {
+
+      console.log(` "${command}" process exited with code ${code}`);
+      cb();
+    });
+
+    tty.stdin.write(`${command}\n`);
+    tty.stdin.end();
+  }
+
+  console.log("");
+  console.log("Choose a url and IP address you aren't already using");
   inquirer.prompt([
     {
       type: 'input',
       default: 'homepress.app',
-      message: 'Which local url should it live at? ',
+      message: "Which local url should it live at? ",
       name: 'siteName'
     }, {
       type: 'input',
@@ -29,88 +53,34 @@ module.exports = function(callback) {
     }
   ], answers => {
     options = answers;
-    destroyVm();
+    
+    console.log('Removing old Vagrant VM');
+    terminalProcess('vagrant destroy --force', () => {
+
+      console.log('Removing Old VM Files');
+      execSync(`rm -rf ${path.join(pwd, '.vagrant')}`);
+      execSync(`rm -f ${path.join(pwd, 'Vagrantfile')}`);
+      execSync(`rm -f ${path.join(pwd, 'Homestead.yaml')}`);
+
+      requireHomestead();
+    });
   });
 
-  function destroyVm() {
+  function requireHomestead() {
 
-    console.log('Removing old Vagrant VM');
-    var vagrantDestroy = require('child_process').spawn('bash');
+    console.log('Requiring Homestead VM');
+    terminalProcess('composer require laravel/homestead --dev', () => {
 
-    vagrantDestroy.stdout.on('data', function (data) {
-        console.log('' + data);
+      console.log('Installing Homestead VM');
+      terminalProcess('composer install', () => {
+
+        console.log('Building Homestead VM');
+        terminalProcess(`${path.join(pwd, 'vendor/bin/homestead')} make`, () => {
+          
+          homesteadConfigure();
+        });
+      });
     });
-
-    vagrantDestroy.stderr.on('data', function (data) {
-        console.log('' + data);
-    });
-
-    vagrantDestroy.on('exit', function (code) {
-
-        console.log('vagrant process exited with code ' + code);
-        removeFiles();
-    });
-
-    vagrantDestroy.stdin.write('vagrant destroy\n');
-    vagrantDestroy.stdin.end();
-  }
-
-  function removeFiles() {
-    
-    console.log('Removing Old VM Files');
-    execSync(`rm -rf ${path.join(pwd, '.vagrant')}`);
-    execSync(`rm -f ${path.join(pwd, 'Vagrantfile')}`);
-    execSync(`rm -f ${path.join(pwd, 'Homestead.yaml')}`);
-
-    composerInstall();
-  }
-
-  function composerInstall() {
-
-    console.log('Installing Homestead VM');
-    var composer = require('child_process').spawn('bash');
-
-    composer.stdout.on('data', function (data) {
-        console.log('' + data);
-    });
-
-    composer.stderr.on('data', function (data) {
-        console.log('' + data);
-    });
-
-    composer.on('exit', function (code) {
-
-        console.log('composer process exited with code ' + code);
-        homesteadMake();
-    });
-
-    composer.stdin.write('composer require laravel/homestead --dev\n');
-    composer.stdin.write('composer install\n');
-    composer.stdin.end();
-  }
-
-  function homesteadMake() {
-
-    console.log('Building Homestead VM');
-
-    var homestead = require('child_process').spawn('bash');
-
-    homestead.stdout.on('data', function (data) {
-        console.log('' + data);
-    });
-
-    homestead.stderr.on('data', function (data) {
-        console.log('' + data);
-    });
-
-    homestead.on('exit', function (code) {
-
-        console.log('homestead process exited with code ' + code);
-        homesteadConfigure();
-    });
-
-    homestead.stdin.write(`${path.join(pwd, 'vendor/bin/homestead')} make\n`);
-    homestead.stdin.end();
   }
 
   function homesteadConfigure() {
@@ -121,61 +91,22 @@ module.exports = function(callback) {
     execSync(`sed -i '' -e"s/192.168.10.10/${options.siteIp}/" ${path.join(pwd, 'Homestead.yaml')}`);
     execSync(`sed -i '' -e"s/\\/public/\\//" ${path.join(pwd, 'Homestead.yaml')}`);
 
-    vagrantUp();
-  }
+    console.log('Bringing Homestead VM Online');
+    terminalProcess('vagrant up', () => {
 
-  function vagrantUp() {
+      console.log('Building Homestead VM');
+      console.log("Get ready to type your password during this next step");
+      terminalProcess('vagrant up', () => {
 
-    console.log('Bringing Vagrant VM Online');
-    var vagrantUp = require('child_process').spawn('bash');
+        console.log(`\n\nOk, ${options.siteIp} ${options.siteName} should have been added to /etc/hosts`);
+        console.log("If not, you'll need to add it your self. Or visit the IP address in your browser");
+        console.log('');
+        console.log(`Now visit http://${options.siteName} in your browser`);
 
-    vagrantUp.stdout.on('data', function (data) {
-        console.log('' + data);
+        callback && callback();
+
+      });
     });
-
-    vagrantUp.stderr.on('data', function (data) {
-        console.log('' + data);
-    });
-
-    vagrantUp.on('exit', function (code) {
-
-        console.log('vagrant up process exited with code ' + code);
-        writeHostFile();
-    });
-
-    vagrantUp.stdin.write('vagrant up\n');
-    vagrantUp.stdin.end();
-  }
-
-  function writeHostFile() {
-
-    // putInHostFileDefault="y"
-    // read -p "Want me to put the host entry in your /etc/hosts file? [y/N]: " putInHostFile
-    // putInHostFile=${putInHostFile:-$putInHostFileDefault}
-
-    // if [ "$putInHostFile" == "y" ]
-    // then
-    //     echo "Get ready to type your password since the hosts file is protected."
-    //     sudo /bin/sh -c 'echo "" >> /etc/hosts'
-    //     sudo /bin/sh -c 'echo "$siteIp $siteName" >> /etc/hosts'
-    //     echo "Ok, \"$siteIp $siteName\" was added to /etc/hosts"
-    //     echo "Now visit http://$siteName in your browser"
-    // else 
-    //     echo "Ok, I didn't add it"
-    //     echo "If you want to access your local dev site in the browser at: $siteName,"
-    //     echo "then you'll need to add the following entry to the end of this file: /etc/hosts"
-    //     echo ""
-    //     echo ""
-    //     echo "    $siteIp    $siteName"
-    //     echo ""
-    //     echo ""
-    //     echo "Then, you can visit http://$siteName in your browser"
-    //     echo "Otherwise, you can just visit $siteIp in your browser"
-    // fi
-
-    // echo "Done"
-
-    callback && callback();
   }
 
 }

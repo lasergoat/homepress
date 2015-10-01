@@ -16,7 +16,7 @@ var steps = {
 switch(command) {
 
   case "debug":
-    steps.wordpress();
+    steps.vm();
   break;
 
   case "start":
@@ -25,10 +25,15 @@ switch(command) {
 
       steps.wordpress(() => {
 
-        steps.gitignore();
-        steps.salts();
-        steps.vm(() => {
-          console.log('ALL DONE.');
+        steps.salts(() => {
+
+          steps.vm(() => {
+
+            steps.gitignore(() => {
+
+              console.log('ALL DONE.');
+            });
+          });
         });
 
       });

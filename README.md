@@ -10,7 +10,7 @@ Have the requirements met below, then simply run:
     npm install -g homepress
     homepress start
 
-**COMING SOON:** *Homepress will ask if you want to add your new local dev site IP address to your hosts file. Hint: you do.* 
+*During install, `Homestead` will ask if you want to add your new local dev site IP address to your hosts file. Hint: you do.* 
 
 
 <h2>Requirements</h2>
@@ -18,10 +18,17 @@ Have the requirements met below, then simply run:
 
 <h4>Have Node/NPM, Virtual Box and Vagrant</h4>
 
+* Be on OSX or Linux (until someone does a PR for Windows)
 * [Node.js](https://nodejs.org/en/)
 * [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
 * [Vagrant](https://www.vagrantup.com/downloads.html)
 * [Have an ssh key](https://help.github.com/articles/generating-ssh-keys/) in your `~/.ssh/` directory
+
+If you already have node, [update it](http://davidwalsh.name/upgrade-nodejs):
+
+    sudo npm cache clean -f
+    sudo npm install -g n
+    sudo n stable
 
 
 <h4>Also Have Composer</h4>
@@ -33,6 +40,7 @@ curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 </pre>
 
+If you already had composer, update it! `composer self-update`.
 
 <h2>Other Commands</h2>
 
