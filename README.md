@@ -6,7 +6,7 @@ A simple approach to local development for Wordpress. Using this tool, you'll ge
 Download a [zip](https://github.com/lasergoat/homepress/archive/master.zip) of the project and then `cd /path/to/homepress.
 
 
-##Installation
+## Installation
 
 Have the requirements met below, then simply run: 
 
@@ -16,10 +16,10 @@ Have the requirements met below, then simply run:
 *This will also ask if you want to add your new local dev site IP address to your hosts file. Hint: you do.*
 
 
-##Requirements
+## Requirements
 
 
-####Have Node/NPM, Virtual Box and Vagrant
+#### Have Node/NPM, Virtual Box and Vagrant
 
 * [Node.js](https://nodejs.org/en/)
 * [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
@@ -27,7 +27,7 @@ Have the requirements met below, then simply run:
 * [Have an ssh key](https://help.github.com/articles/generating-ssh-keys/) in your `~/.ssh/` directory
 
 
-####Also Have Composer
+#### Also Have Composer
 
 [Install composer globally](https://getcomposer.org/doc/00-intro.md#globally):
 
@@ -37,7 +37,7 @@ sudo mv composer.phar /usr/local/bin/composer
 </pre>
 
 
-##Other Commands
+## Other Commands
 
 **Init Everything**: `homepress start` OR `homepress init`
 
@@ -54,11 +54,11 @@ sudo mv composer.phar /usr/local/bin/composer
 **SSH into the VM**: `vagrant ssh`
 
 
-##Todo:
+## Todo:
 
 * finish the part that writes your host entry to /etc/hosts
 
-##Development
+## Development
 
 To test this locally, simply do this:
 
