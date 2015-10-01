@@ -47,18 +47,6 @@ switch(command) {
     steps.vm(() => console.log('ALL DONE.'));
   break;
 
-  case "vm-start":
-    execSync('vagrant up');
-  break;
-
-  case "vm-stop":
-    execSync('vagrant halt');
-  break;
-
-  case "vm-ssh":
-    execSync('vagrant ssh');
-  break;
-
   default:
     console.log("You didn't supply a proper command.");
     console.log("Use on of these: " + [
@@ -66,10 +54,7 @@ switch(command) {
       "init",
       "wp-update",
       "wp-salts",
-      "vm-init",
-      "vm-start",
-      "vm-stop",
-      "vm-ssh"
+      "vm-init"
     ].join(', '));
   break;
 

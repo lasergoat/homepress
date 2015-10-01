@@ -42,7 +42,7 @@ sudo mv composer.phar /usr/local/bin/composer
 
 **Generate new WordPress salts**: `homepress wp-salts`
 
-**Install VM Only (because you already have WordPress**: `homepress vm-init`
+**Install VM Only (because you already have WordPress)**: `homepress vm-init`
 
 **Start the VM**: `vagrant up`
 
