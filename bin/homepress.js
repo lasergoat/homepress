@@ -16,7 +16,7 @@ var steps = {
 switch(command) {
 
   case "debug":
-    // steps.gitignore();
+    steps.wordpress();
   break;
 
   case "start":

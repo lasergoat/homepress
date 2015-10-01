@@ -3,15 +3,13 @@ module.exports = function(callback) {
 
   var execSync = require('child_process').execSync;
   var AdmZip = require('adm-zip');
-  var http = require('http');
   var fs = require('fs');
-  var request = require('request');
   var path = require('path');
+  var download = require(path.join(__dirname, 'download'));
 
   var pwd = process.env.PWD;
-  var zipFileName = path.join(pwd, 'wordpress.zip');
+  var zipFile = path.join(pwd, 'wordpress.zip');
   var unzipDir = path.join(pwd,'unzip');
-  var out = fs.createWriteStream(zipFileName);
 
   var files = [
       'index.php',
@@ -39,19 +37,17 @@ module.exports = function(callback) {
   files.map(file => {execSync(`rm -rf ${path.join(pwd, file)}`)});
 
   // remove any existing zip file or temp directory
-  execSync(`rm -rf ${zipFileName}`);
+  execSync(`rm -rf ${zipFile}`);
   execSync(`rm -rf ${unzipDir}`);
 
   console.log("Downloading WordPress...");
 
   // Downloading WordPress
-  var req = request('https://github.com/WordPress/WordPress/archive/master.zip');
 
-  req.pipe(out);
-  req.on('end', function() {
+  download('https://github.com/WordPress/WordPress/archive/master.zip', zipFile, err => {
 
     console.log("Installing WordPress...");
-    var zip = new AdmZip(zipFileName);
+    var zip = new AdmZip(zipFile);
     zip.extractAllTo(unzipDir);
 
     var dirs = fs.readdirSync(unzipDir).filter(
@@ -66,12 +62,11 @@ module.exports = function(callback) {
     var tempWordpressDir = path.join(unzipDir, dirs[0], '*');
 
     execSync(`rsync -dr ${tempWordpressDir} ${path.join(pwd, '.')}`);
-    execSync(`rm -rf ${zipFileName}`);
+    execSync(`rm -rf ${zipFile}`);
     execSync(`rm -rf ${unzipDir}`);
     execSync(`cp ${path.join(pwd, 'wp-config-sample.php')} ${path.join(pwd, 'wp-config.php')}`);
     console.log('WordPress Installed');
     callback && callback();
-
   });
 
 }
