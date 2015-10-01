@@ -59,8 +59,7 @@ sudo mv composer.phar /usr/local/bin/composer
 
 To test this locally, simply do this:
 
-    git clone https://github.com/lasergoat/homepress.git
-    cd ../
+    git clone https://github.com/lasergoat/homepress.git homepress-test
     mkdir test
     cd test
     npm install -g ../homepress/ && homepress start
