@@ -1,7 +1,7 @@
 
 <h1>Homepress</h1>
 
-A simple approach to local development for Wordpress. Using this tool, you'll get a per-project installation of Wordpress using [Laravel's Homestead](http://laravel.com/docs/master/homestead).
+A simple approach to local development for WordPress. Using this tool, you'll get a per-project installation of WordPress using [Laravel's Homestead](http://laravel.com/docs/master/homestead).
 
 <h2>Installation</h2>
 
@@ -65,10 +65,17 @@ If you already had composer, update it! `composer self-update`.
 
 <h2>Development</h2>
 
-To test this locally, simply do this:
+To develop and test this locally, simply do this:
 
-    git clone https://github.com/lasergoat/homepress.git homepress
+    git clone https://github.com/lasergoat/homepress.git
+    cd homepress
+    npm install
+    cd ../
     mkdir test
     cd test
-    npm install -g ../homepress/ && homepress start
 
+Then, every time you edit a file in homepress, run this command:
+
+    cd ../homepress && npm link && cd ../test && homepress start
+
+This will avoid creating vm and WordPress files within the homepress directory
