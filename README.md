@@ -1,12 +1,9 @@
 
-# Homepress
+<h1>Homepress</h1>
 
 A simple approach to local development for Wordpress. Using this tool, you'll get a per-project installation of Wordpress using [Laravel's Homestead](http://laravel.com/docs/master/homestead).
 
-Download a [zip](https://github.com/lasergoat/homepress/archive/master.zip) of the project and then `cd /path/to/homepress.
-
-
-## Installation
+<h2>Installation</h2>
 
 Have the requirements met below, then simply run: 
 
@@ -16,10 +13,10 @@ Have the requirements met below, then simply run:
 *This will also ask if you want to add your new local dev site IP address to your hosts file. Hint: you do.*
 
 
-## Requirements
+<h2>Requirements</h2>
 
 
-#### Have Node/NPM, Virtual Box and Vagrant
+<h4>Have Node/NPM, Virtual Box and Vagrant</h4>
 
 * [Node.js](https://nodejs.org/en/)
 * [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
@@ -27,7 +24,7 @@ Have the requirements met below, then simply run:
 * [Have an ssh key](https://help.github.com/articles/generating-ssh-keys/) in your `~/.ssh/` directory
 
 
-#### Also Have Composer
+<h4>Also Have Composer</h4>
 
 [Install composer globally](https://getcomposer.org/doc/00-intro.md#globally):
 
@@ -37,7 +34,7 @@ sudo mv composer.phar /usr/local/bin/composer
 </pre>
 
 
-## Other Commands
+<h2>Other Commands</h2>
 
 **Init Everything**: `homepress start` OR `homepress init`
 
@@ -54,11 +51,11 @@ sudo mv composer.phar /usr/local/bin/composer
 **SSH into the VM**: `vagrant ssh`
 
 
-## Todo:
+<h2>Todo:</h2>
 
 * finish the part that writes your host entry to /etc/hosts
 
-## Development
+<h2>Development</h2>
 
 To test this locally, simply do this:
 

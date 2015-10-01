@@ -18,7 +18,6 @@ module.exports = function(callback) {
     '.vagrant',
     'node_modules',
     'npm-debug.log',
-    'theme',
     'readme.html',
     'license.txt',
     'index.php',
