@@ -59,9 +59,17 @@ If you already had composer, update it! `composer self-update`.
 **SSH into the VM**: `vagrant ssh`
 
 
-<h2>Todo:</h2>
+<h2>Bonus: Connecting to MySQL Manually</h2>
 
-* finish the part that writes your host entry to /etc/hosts
+If you use a tool like [Sequel Pro](http://www.sequelpro.com/download), you'll want to use these connection settings to connect to Mysql within the VM.
+
+* Setup connection details:
+    * Host: 127.0.0.1
+    * User: homestead
+    * Password: secret
+    * Database: homestead
+    * Port: 33060
+
 
 <h2>Development</h2>
 
