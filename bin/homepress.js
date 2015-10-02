@@ -16,7 +16,7 @@ var steps = {
 switch(command) {
 
   case "debug":
-    steps.vm();
+    // steps.vm();
   break;
 
   case "start":

@@ -1,6 +1,6 @@
 {
   "name": "homepress",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A simple solution for local Wordpress development within a VM",
   "main": "index.js",
   "repository": {
@@ -21,6 +21,7 @@
   "dependencies": {
     "adm-zip": "^0.4.7",
     "inquirer": "^0.10.1",
+    "replace": "^0.3.0",
     "request": "^2.64.0",
     "underscore": "^1.8.3"
   }

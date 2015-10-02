@@ -5,6 +5,7 @@ module.exports = function(callback) {
   var inquirer = require("inquirer");
   var path = require('path');
   var pwd = process.env.PWD;
+  var replace = require("replace");
 
   console.log('Initializing VM (homestead)');
 
@@ -87,7 +88,14 @@ module.exports = function(callback) {
 
     console.log('Configuring Homestead VM');
 
-    execSync(`sed -i '' -e"s/homestead.app/${options.siteName}/" ${path.join(pwd, 'Homestead.yaml')}`);
+    replace({
+      regex: /hostname:\s*[\w\-\.]+/,
+      replacement: `hostname: ${options.siteName}`,
+      paths: [path.join(pwd, 'Homestead.yaml')],
+      recursive: false,
+      silent: true
+    });
+
     execSync(`sed -i '' -e"s/192.168.10.10/${options.siteIp}/" ${path.join(pwd, 'Homestead.yaml')}`);
     execSync(`sed -i '' -e"s/\\/public/\\//" ${path.join(pwd, 'Homestead.yaml')}`);
 
