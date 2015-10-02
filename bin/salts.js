@@ -4,6 +4,7 @@ module.exports = function(callback) {
   var execSync = require('child_process').execSync;
   var path = require('path');
   var crypto = require('crypto');
+  var replace = require('replace');
 
   console.log('Generating Salts');
 
@@ -11,14 +12,27 @@ module.exports = function(callback) {
 
   var salt = () => crypto.randomBytes(30).toString('hex');
 
-  execSync(`sed -i '' -e "s/AUTH_KEY',         'put your unique phrase here/AUTH_KEY',         '${salt()}/" ${path.join(pwd, 'wp-config.php')}`);
-  execSync(`sed -i '' -e "s/SECURE_AUTH_KEY',  'put your unique phrase here/SECURE_AUTH_KEY',  '${salt()}/" ${path.join(pwd, 'wp-config.php')}`);
-  execSync(`sed -i '' -e "s/LOGGED_IN_KEY',    'put your unique phrase here/LOGGED_IN_KEY',    '${salt()}/" ${path.join(pwd, 'wp-config.php')}`);
-  execSync(`sed -i '' -e "s/NONCE_KEY',        'put your unique phrase here/NONCE_KEY',        '${salt()}/" ${path.join(pwd, 'wp-config.php')}`);
-  execSync(`sed -i '' -e "s/AUTH_SALT',        'put your unique phrase here/AUTH_SALT',        '${salt()}/" ${path.join(pwd, 'wp-config.php')}`);
-  execSync(`sed -i '' -e "s/SECURE_AUTH_SALT', 'put your unique phrase here/SECURE_AUTH_SALT', '${salt()}/" ${path.join(pwd, 'wp-config.php')}`);
-  execSync(`sed -i '' -e "s/LOGGED_IN_SALT',   'put your unique phrase here/LOGGED_IN_SALT',   '${salt()}/" ${path.join(pwd, 'wp-config.php')}`);
-  execSync(`sed -i '' -e "s/NONCE_SALT',       'put your unique phrase here/NONCE_SALT',       '${salt()}/" ${path.join(pwd, 'wp-config.php')}`);
+  [
+    'AUTH_KEY',
+    'SECURE_AUTH_KEY',
+    'LOGGED_IN_KEY',
+    'NONCE_KEY',
+    'AUTH_SALT',
+    'SECURE_AUTH_SALT',
+    'LOGGED_IN_SALT',
+    'NONCE_SALT',
+  ].map(define => {
+
+    // loop the correct number of defines.
+    // each time this will replace only the first occurance of the string: "put your unique phrase here"
+    replace({
+      regex: /put your unique phrase here/,
+      replacement: salt(),
+      paths: [path.join(pwd, 'wp-config.php')],
+      recursive: false,
+      silent: true
+    });
+  });
 
   callback && callback();
 }
