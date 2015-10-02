@@ -1,6 +1,6 @@
 {
   "name": "homepress",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "A simple solution for local Wordpress development within a VM",
   "main": "index.js",
   "repository": {
