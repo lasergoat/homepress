@@ -63,12 +63,20 @@ If you already had composer, update it! `composer self-update`.
 
 If you use a tool like [Sequel Pro](http://www.sequelpro.com/download), you'll want to use these connection settings to connect to Mysql within the VM.
 
-* Setup connection details:
-    * Host: 127.0.0.1
-    * User: homestead
-    * Password: secret
-    * Database: homestead
-    * Port: 33060
+**Setup connection details:**
+
+* Use an SSH connection (not standard)
+* MySQL Host: 10.0.2.15
+* User: homestead
+* Password: secret
+* Database: homestead
+* Port: blank
+* SSH Host: 192.168.10.10**
+* SSH User: vagrant
+* SSH Key: `~/.ssh/id_rsa` (this is your host computer key)
+* SSH Port: blank
+
+`**` This IP is what you typed in during `homepress start` when it asked which IP you want your VM to live at.
 
 
 <h2>Development</h2>
