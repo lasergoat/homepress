@@ -3,6 +3,8 @@
 
 A simple approach to local development for WordPress. Using this tool, you'll get a per-project installation of WordPress using [Laravel's Homestead](http://laravel.com/docs/master/homestead).
 
+<strong>NOTE:</strong> Homepress can install a VM whether or not you use Wordpress! Look below at the "Other Commands" section. 
+
 <h2>Installation</h2>
 
 Have the requirements met below, then simply run: 
