@@ -32,7 +32,7 @@ module.exports = function(callback) {
       'xmlrpc.php',
   ];
 
-  // don't bother using node's unlink 
+  // don't bother using node's unlink
   // since it can't handle non empty directories
   files.map(file => {execSync(`rm -rf ${path.join(pwd, file)}`)});
 
@@ -44,7 +44,7 @@ module.exports = function(callback) {
 
   // Downloading WordPress
 
-  download('https://github.com/WordPress/WordPress/archive/master.zip', zipFile, err => {
+  download('https://wordpress.org/latest.zip', zipFile, err => {
 
     console.log("Installing WordPress...");
     var zip = new AdmZip(zipFile);

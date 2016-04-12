@@ -54,7 +54,7 @@ switch(command) {
 
   default:
     console.log("You didn't supply a proper command.");
-    console.log("Use on of these: " + [
+    console.log("Use one of these: " + [
       "start",
       "init",
       "wp-update",
@@ -64,4 +64,3 @@ switch(command) {
   break;
 
 }
-
